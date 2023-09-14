@@ -1,0 +1,23 @@
+input:
+  kafka:
+    addresses:
+    - ${KAFKA_BROKER:localhost:9092}
+    topics:
+    - ${KAFKA_TOPIC:users}
+    consumer_group: ingestionlayer
+  # batching:
+  #     count: 10
+  #     period: 100ms
+
+pipeline:
+  processors:
+    - mapping: |
+        this.subscription
+    # - http:
+    #     url: https://hub.docker.com/v2/repositories/jeffail/benthos
+    #     verb: GET
+
+
+output:
+  stdout: {}
+
