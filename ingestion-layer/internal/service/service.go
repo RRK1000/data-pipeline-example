@@ -28,7 +28,7 @@ func Run() {
 
 		response := <-responseChan
 		b, _ := json.Marshal(response.data)
-		kafka.Publish(producer, "payments", string(b))
+		kafka.Publish(producer, "users", string(b))
 
 		time.Sleep(time.Duration(5) * time.Second)
 	}
