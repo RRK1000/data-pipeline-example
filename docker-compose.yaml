@@ -42,7 +42,7 @@ services:
 
 
   ingestion-service:
-    build: ./ingestion-layer
+    build: ./ingestion-svc
     restart: always
     environment:
       - KAFKA_URL=kafka:9092
@@ -57,7 +57,7 @@ services:
     ports:
       - 4195:4195
     volumes:
-      - ./processing-layer/config.yaml:/benthos.yaml
+      - ./processing-svc/config.yaml:/benthos.yaml
     environment:
       - KAFKA_BROKER=kafka:9092
     networks:
@@ -67,7 +67,7 @@ services:
       - storage-service
 
   storage-service:
-    build: ./storage-layer
+    build: ./storage-svc
     restart: always
     ports:
       - 8000:8000
