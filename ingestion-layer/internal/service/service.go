@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+	"os"
 	"sync"
 	"time"
 
@@ -19,7 +20,11 @@ func Run() {
 	var wg sync.WaitGroup
 	responseChan := make(chan Response, 10) // change to response struct
 
-	producer := kafka.InitProducer([]string{"localhost:9092"})
+	kafkaURL := os.Getenv("KAFKA_URL")
+	if kafkaURL == "" {
+		kafkaURL = "localhost:9092"
+	}
+	producer := kafka.InitProducer([]string{kafkaURL})
 
 	for {
 		wg.Add(1)
@@ -62,7 +67,6 @@ func getUsers(wg *sync.WaitGroup, responseChan chan<- Response) {
 		}
 		return
 	}
-	// log.Println("Here", responseMap)
 
 	responseChan <- Response{
 		statusCode: http.StatusAccepted,
