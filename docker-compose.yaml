@@ -25,7 +25,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
     volumes:
-      - ./storage-layer/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./storage-svc/init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres_data:/var/lib/postgresql/data
   pgadmin:
     image: dpage/pgadmin4
@@ -41,7 +41,7 @@ services:
     restart: unless-stopped
 
 
-  ingestion-service:
+  ingestion-svc:
     build: ./ingestion-svc
     restart: always
     environment:
@@ -51,7 +51,7 @@ services:
     depends_on:
       - kafka
 
-  processing-service:
+  processing-svc:
     image: jeffail/benthos
     restart: always
     ports:
@@ -64,9 +64,9 @@ services:
       - kafka-net
       - postgres-net
     depends_on:
-      - storage-service
+      - storage-svc
 
-  storage-service:
+  storage-svc:
     build: ./storage-svc
     restart: always
     ports:
