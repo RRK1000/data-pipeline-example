@@ -22,7 +22,7 @@ func Run() {
 
 	kafkaURL := os.Getenv("KAFKA_URL")
 	if kafkaURL == "" {
-		kafkaURL = "localhost:9092"
+		kafkaURL = "localhost:9094"
 	}
 	producer := kafka.InitProducer([]string{kafkaURL})
 
