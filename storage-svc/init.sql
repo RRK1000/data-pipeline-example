@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS public.subscriptions
     status character varying(255) COLLATE pg_catalog."default",
     term character varying(255) COLLATE pg_catalog."default",
     CONSTRAINT subscriptions_pkey PRIMARY KEY (username)
-)
+);
 
 ALTER TABLE IF EXISTS public.subscriptions
     OWNER to postgres;
