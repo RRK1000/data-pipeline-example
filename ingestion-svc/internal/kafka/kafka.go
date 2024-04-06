@@ -13,7 +13,7 @@ func InitProducer(brokerList []string) sarama.SyncProducer {
 	config.Producer.Return.Successes = true
 	producer, err := sarama.NewSyncProducer(brokerList, config)
 	if err != nil {
-		log.Fatalln("Failed to start Sarama producer:", err)
+		log.Fatalln("make sure that Kafka is accessible and running. err: ", err)
 	}
 	return producer
 }

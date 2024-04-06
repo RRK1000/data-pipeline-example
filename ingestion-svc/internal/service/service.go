@@ -18,7 +18,7 @@ type Response struct {
 
 func Run() {
 	var wg sync.WaitGroup
-	responseChan := make(chan Response, 10) // change to response struct
+	responseChan := make(chan Response) 
 
 	kafkaURL := os.Getenv("KAFKA_URL")
 	if kafkaURL == "" {
