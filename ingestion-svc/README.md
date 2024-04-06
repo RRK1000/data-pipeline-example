@@ -15,7 +15,8 @@ The ingestion layer is a Go service that polls the Random Data API for user data
 KAFKA_URL : Kafka Instance Endpoint (default: localhost:9094)
 
 ## Running the application
-```go run main.go
+```
+go run main.go
 ```
 
 ## Application Architecture
