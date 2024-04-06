@@ -19,7 +19,7 @@ pipeline:
 
 output:
   http_client:
-      url: "http://storage-svc:8000/subscription/"
+      url: "http://${STORAGE_SVC_ENDPOINT:localhost:8000}/subscription/"
       verb: POST
       headers:
         Content-Type: application/json

@@ -60,6 +60,7 @@ services:
       - ./processing-svc/config.yaml:/benthos.yaml
     environment:
       - KAFKA_BROKER=kafka:9092
+      - STORAGE_SVC_ENDPOINT=storage-svc:8000
     networks:
       - kafka-net
       - postgres-net
